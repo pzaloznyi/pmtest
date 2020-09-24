@@ -5,7 +5,7 @@ To build and run an app please install [Docker](https://www.docker.com/products/
 ## Build steps (execute in terminal in project root folder):
 ```shell
 1. sh build
-2. sh run "some text"
+2. sh run -m "some text"
 ```
 
 

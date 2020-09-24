@@ -1,4 +1,16 @@
-FROM mcr.microsoft.com/dotnet/core/runtime:3.1
-COPY App/bin/Release/netcoreapp3.1/publish/ App/
-WORKDIR /App
-ENTRYPOINT ["dotnet", "PMTest.dll"]
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS base
+WORKDIR /src
+
+COPY src/*.csproj .
+RUN dotnet restore
+COPY . .
+RUN dotnet build -c Release -o /app
+
+FROM base AS publish
+RUN dotnet publish -c Release -o /app
+
+FROM base
+WORKDIR /app
+COPY --from=publish /app .
+
+ENTRYPOINT [ "dotnet", "PMTest.dll" ]

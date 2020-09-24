@@ -1,7 +1,21 @@
 #!/bin/bash
+
 if [ -n "$1" ]
 then
-    docker run -it --rm pmtest-image $*
+    flag_m=""
+
+    while [ -n "$1" ]
+    do
+        case "$1" in
+        -h) echo "here is help :) \nyou can use -m or -t options"
+            exit;;
+        -m) flag_m="$2";;
+        *) break;;
+        esac
+        shift
+    done
+    
+    docker run -it --rm pmtest-image $flag_m
 else
-    echo "No text found. Please run 'sh run \"<text>\""
+    echo "use at least one argument, try -h"
 fi
