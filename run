@@ -1,0 +1,7 @@
+#!/bin/bash
+if [ -n "$1" ]
+then
+    docker run -it --rm pmtest-image $*
+else
+    echo "No text found. Please run 'sh run \"<text>\""
+fi

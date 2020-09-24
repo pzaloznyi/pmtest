@@ -1,0 +1,6 @@
+#!/bin/bash
+cd App/
+dotnet build
+dotnet publish -c Release
+cd ..
+docker build -t pmtest-image -f Dockerfile .

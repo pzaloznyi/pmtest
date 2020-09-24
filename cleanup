@@ -1,0 +1,3 @@
+#!/bin/bash
+docker rmi pmtest-image
+docker rmi mcr.microsoft.com/dotnet/core/runtime:3.1
